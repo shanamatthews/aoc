@@ -8,7 +8,7 @@ import (
   "fmt"
 )
 
-//         you
+//        them
 //      | A B C
 //     -------- 
 // m  A | x L W
