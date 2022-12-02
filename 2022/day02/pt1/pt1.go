@@ -8,12 +8,19 @@ import (
   "fmt"
 )
 
+//         you
+//      | A B C
+//     -------- 
+// m  A | x L W
+// e  B | W x L
+//    C | L W x
+
 
 func scoreMatch(p1 string, p2 string) (matchScore int) {
   matchScore = 0
 
   switch p2 {
-    case "A":
+    case "X":
       matchScore = 1
 
       switch p1 {
@@ -25,7 +32,7 @@ func scoreMatch(p1 string, p2 string) (matchScore int) {
           matchScore = matchScore + 6
       }
 
-    case "B":
+    case "Y":
       matchScore = 2
 
       switch p1 {
@@ -37,7 +44,7 @@ func scoreMatch(p1 string, p2 string) (matchScore int) {
           matchScore = matchScore + 0
       }
 
-    case "C":
+    case "Z":
       matchScore = 3
 
       switch p1 {
@@ -54,14 +61,6 @@ func scoreMatch(p1 string, p2 string) (matchScore int) {
 }
 
 func main() {
-  // I thought that pt 2 would involve changing this mapping in
-  // a straightforward way
-  var letterMapping map[string]string
-  letterMapping = make(map[string]string)
-  letterMapping["X"] = "A"
-  letterMapping["Y"] = "B"
-  letterMapping["Z"] = "C"
-
   file, _ := os.Open("../input.txt")
   defer file.Close()
 
@@ -71,7 +70,7 @@ func main() {
   for lineScanner.Scan() {
     words := strings.Fields(lineScanner.Text())
     fmt.Println(words)
-    matchScore := scoreMatch(words[0], letterMapping[words[1]])
+    matchScore := scoreMatch(words[0], words[1])
     // fmt.Println(matchScore)
     totalScore = totalScore + matchScore
   }
