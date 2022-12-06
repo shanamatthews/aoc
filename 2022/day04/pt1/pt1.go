@@ -14,10 +14,12 @@ type Range struct {
   End int
 }
 
-func hasFullOverlap(r1 Range, r2 Range) int {
-  fmt.Println(r1)
-  fmt.Println(r2)
-  return 0
+func hasFullOverlap(r1 Range, r2 Range) bool {
+  if r1.Start >= r2.Start && r1.End <= r2.End {
+    return true
+  } else {
+    return false
+  }
 }
 
 func main() {
@@ -43,7 +45,9 @@ func main() {
     r1 := Range{r1Start, r1End}
     r2 := Range{r2Start, r2End}
 
-    numFullOverlaps = numFullOverlaps + hasFullOverlap(r1, r2)
+    if hasFullOverlap(r1, r2) || hasFullOverlap(r2, r1) {
+      numFullOverlaps = numFullOverlaps + 1
+    }
   }
 
   if err := lineScanner.Err(); err != nil {
