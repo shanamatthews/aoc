@@ -13,6 +13,10 @@ import (
 const numStacks = 9
 
 func moveItems(source *[]string, destination *[]string, numToMove int) {
+//  fmt.Printf("Move %v from: ", numToMove)
+//  fmt.Printf("%v to: ", *source)
+//  fmt.Println(*destination)
+
   for i := 0; i < numToMove; i++ {
     *destination = append(*destination, (*source)[len(*source) - 1])
     *source = (*source)[:len(*source) - 1]
@@ -67,6 +71,4 @@ func main() {
   for _, stack := range stacks {
     fmt.Println(stack)
   }
-
-  fmt.Println("answer")
 }
