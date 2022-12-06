@@ -51,6 +51,4 @@ func main() {
   if err := lineScanner.Err(); err != nil {
     log.Fatal(err)
   }
-
-  fmt.Println("answer")
 }
