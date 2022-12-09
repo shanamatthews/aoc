@@ -23,6 +23,8 @@ type FileTree struct {
   Parent *FileTree
 }
 
+const smallCutoff = 100000
+
 func calculateDirSizes(node *FileTree) int {
   if len((*node).Children) == 0 {
     // base, this is a file
@@ -47,7 +49,7 @@ func sumSmallDirs(node *FileTree) int {
   } else {
     totalSize := 0
 
-    if (*node).Size < 100000 {
+    if (*node).Size < smallCutoff {
       totalSize = (*node).Size
     }
 
